@@ -21,6 +21,7 @@ RUN apt-get update && \
         php-soap \
         php-uploadprogress \
         php-zip \
+RUN mkdir n1
 EXPOSE 80
 USER www-data
 
