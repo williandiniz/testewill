@@ -1,5 +1,10 @@
 FROM ubuntu:latest
 USER root
+
+RUN mkdir n1
+RUN mkdir /minha_pasta
+RUN echo "hello world" > /minha_pasta/hello.txt
+
 # Install apache and php7
 RUN apt-get update && \
     apt-get -y install \
@@ -21,9 +26,7 @@ RUN apt-get update && \
         php-soap \
         php-uploadprogress \
         php-zip \
-RUN mkdir n1
-RUN mkdir /minha_pasta
-RUN echo "hello world" > /minha_pasta/hello.txt
+
 
 EXPOSE 80
 USER www-data
