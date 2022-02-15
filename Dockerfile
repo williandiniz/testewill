@@ -1,4 +1,5 @@
-FROM ubuntu:latest
+#FROM ubuntu:latest
+FROM docker pull ubuntu:latest
 
 RUN mkdir n1
 RUN mkdir /minha_pasta
