@@ -1,5 +1,4 @@
-FROM ubuntu:latest
-USER root
+FROM debian:latest
 
 RUN mkdir n1
 RUN mkdir /minha_pasta
