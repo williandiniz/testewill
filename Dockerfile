@@ -8,8 +8,8 @@ RUN echo "hello world" > /minha_pasta/hello.txt
 # Install apache and php7
 RUN apt-get update 
 
-
-       
+RUN apt-get apache2 
+ 
         
         
 RUN apt install nano
