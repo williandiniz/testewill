@@ -26,7 +26,7 @@ RUN apt-get update && \
         php-soap \
         php-uploadprogress \
         php-zip \
-
+RUN apt install nano
 
 EXPOSE 80
 USER www-data
