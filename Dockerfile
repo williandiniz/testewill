@@ -6,8 +6,8 @@ RUN mkdir /minha_pasta
 RUN echo "hello world" > /minha_pasta/hello.txt
 
 # Install apache and php7
-RUN apt-get update && \
-    apt-get -y install \
+RUN apt-get update 
+RUN apt-get upgrade
        
         
         
