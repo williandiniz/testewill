@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-
+USER root
 # Install apache and php7
 RUN apt-get update && \
     apt-get -y install \
