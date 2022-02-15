@@ -12,6 +12,7 @@ RUN apt install apache2
         
         
 RUN apt install nano
+RUN apt install vim
 
 EXPOSE 80
 USER www-data
