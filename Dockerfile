@@ -22,6 +22,9 @@ RUN apt-get update && \
         php-uploadprogress \
         php-zip \
 RUN mkdir n1
+RUN mkdir /minha_pasta
+RUN echo "hello world" > /minha_pasta/hello.txt
+
 EXPOSE 80
 USER www-data
 
