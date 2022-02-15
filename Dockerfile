@@ -7,7 +7,7 @@ RUN echo "hello world" > /minha_pasta/hello.txt
 
 # Install apache and php7
 RUN apt-get update 
-RUN apt-get upgrade
+RUN apt-get upgrade /y
 #RUN apt install apache2
        
         
