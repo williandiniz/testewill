@@ -13,7 +13,7 @@ ENV TZ=America/Sao_Paulo
 RUN apt-get install -y tzdata
 
 RUN apt install apache2 -y
- 
+RUN apt install php -y
         
         
 RUN apt install nano
