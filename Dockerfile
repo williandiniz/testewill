@@ -24,10 +24,14 @@ RUN  apt-get update && \
         php-uploadprogress \
         php-zip \
         curl \
-        nano
+        nano \
+        wget
 
 EXPOSE 80
 
 WORKDIR /var/www/html
+
+RUN echo "Hello from Containerfile" > /var/www/html/teste.html
+RUN wget "www.google.com"
 
 CMD apachectl -D FOREGROUND
