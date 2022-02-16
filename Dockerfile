@@ -20,7 +20,7 @@ RUN apt install nano
 #RUN apt install vim
 
 EXPOSE 80
-#USER www-data
+USER www-data
 
-#ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]
+ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]
 
