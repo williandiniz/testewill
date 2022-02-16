@@ -29,7 +29,7 @@ RUN  apt-get -y install \
         nano \
         wget
 
-EXPOSE 80
+EXPOSE 8080 8443
 
 WORKDIR /var/www/html
 
