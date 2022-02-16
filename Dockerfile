@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM httpd:latest
 
 USER 0
 
@@ -14,11 +14,11 @@ RUN apt install -y curl
 
 RUN mkdir n1
 
-EXPOSE 8080
+EXPOSE 80
 
-USER www-data
+#USER www-data
 
-ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]
+#ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]
 
 #USER 1001
 
