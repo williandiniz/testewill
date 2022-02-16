@@ -2,8 +2,8 @@ FROM ubuntu:latest
 
 ENV TZ=America/Sao_Paulo
     
-    apt-get update && \
-    apt-get -y install \
+RUN  apt-get update && \
+     apt-get -y install \
         tzdata \
         apache2 \
         libapache2-mod-php \
@@ -27,12 +27,6 @@ ENV TZ=America/Sao_Paulo
 
 EXPOSE 80
 
-CMD apachectl -D FOREGROUND 
-
 WORKDIR /var/www/html
-
-RUN rm index.html
-
-HEALTHCHECK --interval=5s --timeout=3s --retries=3 CMD curl -f http://localhost || exit 1
 
 CMD apachectl -D FOREGROUND
