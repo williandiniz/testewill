@@ -1,10 +1,12 @@
 FROM ubuntu:latest
 
 ENV TZ=America/Sao_Paulo
-    
-RUN  apt-get update && \
-     apt-get -y install \
-        tzdata \
+
+RUN  apt-get update
+
+RUN apt-get install -y tzdata
+
+RUN  apt-get -y install \
         apache2 \
         libapache2-mod-php \
         libapache2-mod-auth-openidc \
