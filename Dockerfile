@@ -10,7 +10,6 @@ RUN apt-get install -y tzdata
 
 RUN apt install -y php 
 RUN apt install -y php php-gd 
-RUN apt install -y php-pecl-zip.x86_64
 RUN apt install -y curl
 
 RUN chown -R 1001:0 /opt/app-root/src
