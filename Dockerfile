@@ -12,9 +12,6 @@ RUN apt install -y php
 RUN apt install -y php php-gd 
 RUN apt install -y curl
 
-RUN chown -R 1001:0 /opt/app-root/src
-RUN chmod -R 777 /opt/app-root/src
-
 RUN mkdir n1
 
 ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]
