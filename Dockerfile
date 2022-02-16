@@ -8,7 +8,6 @@ RUN echo "hello world" > /minha_pasta/hello.txt
 # Install apache and php7
 RUN apt-get update 
 
-ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Sao_Paulo
 RUN apt-get install -y tzdata
 
