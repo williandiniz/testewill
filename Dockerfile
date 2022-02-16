@@ -14,7 +14,7 @@ RUN yum install -y tzdata
 RUN yum install -y php 
 RUN yum install -y php php-gd 
 RUN yum install -y curl
-
+RUN mkdir /tmp/n1
 ENV LogLevel "info"
 #ADD http://someserver.com/filename.pdf /var/www/html
 #COPY ./src/ /var/www/html/
