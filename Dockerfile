@@ -8,32 +8,16 @@ RUN apt-get install -y tzdata
 
 RUN  apt-get -y install \
         apache2 \
-        libapache2-mod-php \
-        libapache2-mod-auth-openidc \
-        php-cli \
-        php-curl \
-        php-mbstring \
-        php-gd \
-        php-mysql \
-        php-json \
-        php-ldap \
-        php-mime-type \
-        php-pgsql \
-        php-tidy \
-        php-intl \        
-        php-xmlrpc \        
-        php-soap \
-        php-uploadprogress \
-        php-zip \
-        curl \
-        nano \
-        wget
-
+        wget \
+        nano
+        
 EXPOSE 8080 8443
+
+RUN sed -i -e 's/80/8080/g' -e 's/443/8443/g' /etc/apache2/ports.conf 
 
 WORKDIR /var/www/html
 
 RUN echo "Hello from Containerfile" > /var/www/html/teste.html
 RUN wget "www.google.com"
 
-CMD apachectl -D FOREGROUND
+#CMD apachectl -D FOREGROUND
