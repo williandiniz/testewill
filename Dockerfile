@@ -23,7 +23,8 @@ RUN  apt-get update && \
         php-soap \
         php-uploadprogress \
         php-zip \
-        curl 
+        curl \
+        nano
 
 EXPOSE 80
 
