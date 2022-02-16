@@ -7,8 +7,7 @@ RUN  apt-get update
 RUN apt-get install -y tzdata
 
 RUN  apt-get -y install \
-        libapache2-mod-php \
-        libapache2-mod-auth-openidc \
+        php \
         php-cli \
         php-curl \
         php-mbstring \
