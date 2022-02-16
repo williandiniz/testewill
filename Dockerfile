@@ -14,6 +14,10 @@ RUN apt install -y curl
 
 RUN mkdir n1
 
+EXPOSE 80
+
+USER www-data
+
 ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]
 
 #USER 1001
