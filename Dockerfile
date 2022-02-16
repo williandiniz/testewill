@@ -2,31 +2,23 @@ FROM ubuntu:latest
 
 USER 0
 
-# Copy and Work dir
-#COPY . /opt/app-root/src
-#RUN mv /opt/app-root/src/.env.${AMBIENTE} /opt/app-root/src/.env
-
 RUN apt-get update 
 
 ENV TZ=America/Sao_Paulo
 
 RUN apt-get install -y tzdata
 
-RUN apt install -y php php-gd php-pecl-zip.x86_64 curl
-
-#WORKDIR /opt/app-root/src
-#RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
- #   php composer-setup.php && \
-  #  php -r "unlink('composer-setup.php');" && \
-   # mv composer.phar /usr/local/bin/composer
-
-#RUN composer install --no-dev --prefer-dist --optimize-autoloader && \
-    composer clear-cache
+RUN apt install -y php 
+RUN apt install -y php php-gd 
+RUN apt install -y php-pecl-zip.x86_64
+RUN apt install -y curl
 
 RUN chown -R 1001:0 /opt/app-root/src
 RUN chmod -R 777 /opt/app-root/src
 
 RUN mkdir n1
+
+ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]
 
 #USER 1001
 
