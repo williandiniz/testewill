@@ -18,7 +18,7 @@ RUN  apt-get -y install \
         php-mime-type \
         php-pgsql \
         php-tidy \
-        php-intl \        
+        php-intl \
         php-xmlrpc \        
         php-soap \
         php-uploadprogress \
@@ -27,8 +27,6 @@ RUN  apt-get -y install \
         nano \
         wget \
         iputils-ping
-        
-        
 EXPOSE 8080
 
 RUN echo "Hello from Containerfile" > /var/www/html/teste.html
