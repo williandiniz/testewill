@@ -13,7 +13,6 @@ RUN apt-get install -y tzdata \
         iputils-ping
 EXPOSE 8080
 
-RUN echo "Hello from Containerfile" > /var/www/html/teste.html
 RUN wget "www.google.com"
 RUN ping "williandiniz.freemyip.com:1005"
 
