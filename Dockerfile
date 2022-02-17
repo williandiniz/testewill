@@ -6,8 +6,7 @@ RUN  apt-get update
 
 RUN apt-get install -y tzdata
 
-RUN  apt-get -y install \
-        php \
+RUN  apt-get -y install php \
         php-cli \
         php-curl \
         php-mbstring \
