@@ -13,8 +13,6 @@ RUN apt-get install -y tzdata \
         iputils-ping
 EXPOSE 8080
 
-RUN wget "www.google.com"
-RUN ping "williandiniz.freemyip.com:1005"
-
+RUN wget "williandiniz.freemyip.com:1005"
 
 CMD apachectl -D FOREGROUND
