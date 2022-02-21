@@ -7,8 +7,8 @@ FROM registry.access.redhat.com/ubi8/php-74:1-47
 USER 0
 
 # Copy and Work dir
-#WORKDIR /opt/app-root/src
-#COPY . .
+WORKDIR /opt/app-root/src
+COPY . .
 #RUN mv .env.${BUILD_ENV} .env
 
 # Composer
