@@ -16,7 +16,7 @@ RUN apt-get update \
     && apt-get install -y git zlib1g-dev libpng-dev \
     &&  apt-get install libcurl4-gnutls-dev libxml2-dev -y\
     && apt-get install libzip-dev -y\
-    && docker-php-ext-install pdo pdo_mysql zip ldap gd curl soap
+    && docker-php-ext-install pdo pdo_mysql zip ldap gd curl soap wget net-tools
 
 
 
