@@ -26,7 +26,7 @@ RUN apt-get update \
 #RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
   
 # Set working directory
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 COPY . .
 
@@ -34,5 +34,7 @@ COPY . .
 #RUN composer install
 
 USER 0
+
+EXPOSE 9000
 
 CMD ["php-fpm"]
