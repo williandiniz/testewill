@@ -8,7 +8,7 @@ RUN docker-php-ext-install pdo_mysql
 
 RUN apt update -y &&\
     apt install nano -y &&\
-    apt-get install libldb-dev libldap2-dev  -y
+    apt-get install libldb-dev libldap2-dev wget net-tools -y
     
 RUN docker-php-ext-install opcache
 
@@ -16,7 +16,7 @@ RUN apt-get update \
     && apt-get install -y git zlib1g-dev libpng-dev \
     &&  apt-get install libcurl4-gnutls-dev libxml2-dev -y\
     && apt-get install libzip-dev -y\
-    && docker-php-ext-install pdo pdo_mysql zip ldap gd curl soap wget net-tools
+    && docker-php-ext-install pdo pdo_mysql zip ldap gd curl soap
 
 
 
@@ -35,6 +35,6 @@ COPY . .
 
 USER 0
 
-EXPOSE 9000
+EXPOSE 80
 
 CMD ["php-fpm"]
