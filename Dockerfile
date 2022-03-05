@@ -13,7 +13,10 @@ RUN apt update -y &&\
 RUN docker-php-ext-install opcache
 
 RUN apt-get update \
-    docker-php-ext-install pdo pdo_mysql zip gd curl 
+    && apt-get install -y git zlib1g-dev libpng-dev \
+    &&  apt-get install libcurl4-gnutls-dev libxml2-dev -y\
+    && apt-get install libzip-dev -y\
+    && docker-php-ext-install pdo pdo_mysql zip ldap gd curl soap
 
 
 
