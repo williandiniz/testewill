@@ -13,17 +13,14 @@ RUN apt update -y &&\
 RUN docker-php-ext-install opcache
 
 RUN apt-get update \
-    && apt-get install -y git zlib1g-dev libpng-dev \
-    &&  apt-get install libcurl4-gnutls-dev libxml2-dev -y\
-    && apt-get install libzip-dev -y\
-    && docker-php-ext-install pdo pdo_mysql zip ldap gd curl soap
+    docker-php-ext-install pdo pdo_mysql zip gd curl 
 
 
 
 # Get latest Composer
 # COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
   
 # Set working directory
 WORKDIR /var/www
@@ -31,8 +28,8 @@ WORKDIR /var/www
 COPY . .
 
 #RUN composer config --auth gitlab-token.git.sebraemg.com.br "ct9ZiYyPsTjiee4Y7XhK" --no-ansi --no-interaction
-RUN composer install
+#RUN composer install
 
-USER 1000
+USER 0
 
 CMD ["php-fpm"]
