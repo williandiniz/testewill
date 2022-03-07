@@ -32,4 +32,4 @@ WORKDIR /var/www
 COPY . .
 
 #RUN composer config --auth gitlab-token.git.sebraemg.com.br "ct9ZiYyPsTjiee4Y7XhK" --no-ansi --no-interaction
-RUN composer install
+#RUN composer install
