@@ -2,20 +2,22 @@
 FROM bitnami/apache
 
 # Install system dependencies
-RUN apt-get update && apt-get install
+#RUN apt-get update && apt-get install
 
-RUN apt-get install php8
+RUN install_packages php8
+
+#RUN apt-get install php8
 
 # Install PHP extensions
-RUN apt-get install -y pdo_mysql
+#RUN apt-get install -y pdo_mysql
 
-RUN apt update -y &&\
+#RUN apt update -y &&\
     apt install nano -y &&\
     apt-get install libldb-dev libldap2-dev  -y
     
 #RUN docker-php-ext-install opcache
 
-RUN apt-get update \
+#RUN apt-get update \
     && apt-get install -y git zlib1g-dev libpng-dev \
     &&  apt-get install libcurl4-gnutls-dev libxml2-dev -y\
     && apt-get install libzip-dev -y\
@@ -26,13 +28,13 @@ RUN apt-get update \
 # Get latest Composer
 # COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
   
 # Set working directory
 #COPY . .
 
 #RUN composer config --auth gitlab-token.git.sebraemg.com.br "ct9ZiYyPsTjiee4Y7XhK" --no-ansi --no-interaction
-RUN composer install
+#RUN composer install
 
 USER 1002
 
