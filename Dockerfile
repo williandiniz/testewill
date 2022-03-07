@@ -8,4 +8,3 @@ RUN docker-php-ext-configure zip
 RUN docker-php-ext-install zip
 RUN chown -R www-data:www-data /var/www/html
 RUN a2enmod rewrite
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
