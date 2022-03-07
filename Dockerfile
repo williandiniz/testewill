@@ -4,6 +4,8 @@ FROM bitnami/apache
 # Install system dependencies
 RUN apt-get update && apt-get install
 
+RUN apt-get install php8
+
 # Install PHP extensions
 RUN apt-get install -y pdo_mysql
 
