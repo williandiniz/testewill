@@ -2,10 +2,10 @@
 FROM bitnami/apache
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql
+RUN apt-get install -y pdo_mysql
 
 RUN apt update -y &&\
     apt install nano -y &&\
