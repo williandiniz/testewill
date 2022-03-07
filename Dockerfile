@@ -1,4 +1,4 @@
-FROM php:8.0.0rc1-fpm
+FROM php:8.1.3-apache
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y git
@@ -34,7 +34,9 @@ COPY . .
 #RUN composer install
 
 USER 0
-
 EXPOSE 80
+CMD ["apache2-foreground"]
 
-CMD ["php-fpm"]
+
+
+
