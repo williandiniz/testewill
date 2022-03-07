@@ -2,8 +2,6 @@ FROM php:8.1.1-apache
 
 RUN echo "Europe/Berlin" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
-ENV APACHE_DOCUMENT_ROOT /var/www/html/web
-
 RUN  apt-get update && apt-get install -y ca-certificates gnupg
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 
