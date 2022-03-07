@@ -1,20 +1,40 @@
+#FROM php:8.0.0rc1-fpm
 FROM bitnami/apache
-LABEL maintainer "Bitnami <containers@bitnami.com>"
 
-### Change user to perform privileged actions
-USER 0
-### Install 'vim'
-RUN install_packages vim
-### Revert to the original non-root user
-USER 1001
+# Install system dependencies
+RUN apt-get update && apt-get install -y git
 
-### Enable mod_ratelimit module
-RUN sed -i -r 's/#LoadModule ratelimit_module/LoadModule ratelimit_module/' /opt/bitnami/apache/conf/httpd.conf
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql
 
-### Modify the ports used by Apache by default
-## It is also possible to change these environment variables at runtime
-#ENV APACHE_HTTP_PORT_NUMBER=8181
-#EXPOSE 8181 8443
+RUN apt update -y &&\
+    apt install nano -y &&\
+    apt-get install libldb-dev libldap2-dev  -y
+    
+#RUN docker-php-ext-install opcache
 
-### Modify the default container user
+RUN apt-get update \
+    && apt-get install -y git zlib1g-dev libpng-dev \
+    &&  apt-get install libcurl4-gnutls-dev libxml2-dev -y\
+    && apt-get install libzip-dev -y\
+    && docker-php-ext-install pdo pdo_mysql zip ldap gd curl soap
+
+
+
+# Get latest Composer
+# COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  
+# Set working directory
+#COPY . .
+
+#RUN composer config --auth gitlab-token.git.sebraemg.com.br "ct9ZiYyPsTjiee4Y7XhK" --no-ansi --no-interaction
+RUN composer install
+
 USER 1002
+
+
+
+
+
