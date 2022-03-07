@@ -19,3 +19,5 @@ RUN apt-get update \
     && docker-php-ext-install pdo pdo_mysql zip ldap gd curl soap
 
 COPY . .
+
+EXPOSE 9000
