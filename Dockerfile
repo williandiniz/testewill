@@ -18,25 +18,4 @@ RUN apt-get update \
     && apt-get install libzip-dev -y\
     && docker-php-ext-install pdo pdo_mysql zip ldap gd curl soap
 
-
-
-# Get latest Composer
-# COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-  
-# Set working directory
-WORKDIR /var/www/html
-
 COPY . .
-
-#RUN composer config --auth gitlab-token.git.sebraemg.com.br "ct9ZiYyPsTjiee4Y7XhK" --no-ansi --no-interaction
-#RUN composer install
-
-USER 0
-EXPOSE 80
-CMD ["apache2-foreground"]
-
-
-
-
