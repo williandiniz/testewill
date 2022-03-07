@@ -1,15 +1,16 @@
-# define a imagem base
-FROM debian:latest
+FROM bitnami/minideb
+...
+## Install required system packages and dependencies
+#RUN install_packages xxx yyy zzz
+RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "apache" "aa.bb.cc-dd"
+...
+COPY rootfs /
 
-# define o mantenedor da imagem
-LABEL maintainer="Willian Diniz"
+#ENV ...
 
-USER root
-# Atualiza a imagem com os pacotes
-RUN apt-get update && apt-get upgrade -y
+EXPOSE 8080 8443
 
-# Instala o NGINX para testar
-RUN apt-get install apache2 -y
-
-# Expoe a porta 80
-EXPOSE 80
+WORKDIR /app
+USER 1001
+ENTRYPOINT [ "/opt/bitnami/scripts/apache/entrypoint.sh" ]
+CMD [ "/opt/bitnami/scripts/apache/run.sh" ]
