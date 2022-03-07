@@ -4,7 +4,7 @@ FROM bitnami/apache
 # Install system dependencies
 #RUN apt-get update && apt-get install
 
-RUN install_packages php8
+RUN install_packages php
 
 #RUN apt-get install php8
 
