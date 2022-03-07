@@ -29,4 +29,4 @@ RUN echo 'xdebug.client_host=host.docker.internal' >> /usr/local/etc/php/php.ini
 RUN echo 'xdebug.start_with_request=yes' >> /usr/local/etc/php/php.ini
 RUN echo 'session.save_path = "/tmp"' >> /usr/local/etc/php/php.ini
 
-COPY ..
+
