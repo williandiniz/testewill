@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM httpd:latest
 
 RUN apt-get update -y \
-    && apt-get install -y apache2
+    && apt-get install -y php
