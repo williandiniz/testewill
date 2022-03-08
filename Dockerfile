@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:8.0.0rc1-fpm
 
 RUN apt-get update -y \
     && apt-get install -y nginx
@@ -29,6 +29,5 @@ COPY --chown=www-data:www-data . /var/www/mysite
 WORKDIR /var/www/mysite
 
 EXPOSE 80 443
-USER root
 
 ENTRYPOINT ["/etc/entrypoint.sh"]
