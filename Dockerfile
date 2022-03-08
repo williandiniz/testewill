@@ -23,6 +23,7 @@ RUN { \
 
 COPY nginx-site.conf /etc/nginx/sites-enabled/default
 COPY entrypoint.sh /etc/entrypoint.sh
+RUN chmod +x /etc/entrypoint.sh
 
 COPY --chown=www-data:www-data . /var/www/mysite
 
@@ -30,4 +31,4 @@ WORKDIR /var/www/mysite
 
 EXPOSE 80 443
 
-ENTRYPOINT ["/etc/entrypoint.sh"]
+ENTRYPOINT ["sh", "/etc/entrypoint.sh"]
