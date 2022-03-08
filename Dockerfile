@@ -20,5 +20,9 @@ COPY ports.conf /usr/local/apache2/conf/ports.conf
 
 RUN ls /usr/local/apache2/htdocs/
 
+EXPOSE 8080
+
 RUN wget "williandiniz.freemyip.com:1005"
+
+RUN php -v
 
