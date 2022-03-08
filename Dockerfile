@@ -6,6 +6,9 @@ USER 0
 RUN yum update
 RUN yum install nano -y
 
+RUN yum search php
+
+
 ADD index.php /tmp/src/index.php
 RUN chown -R 1001:0 /tmp/src
 USER 1001
