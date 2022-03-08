@@ -16,7 +16,7 @@ RUN apt-get install -y tzdata \
 
 COPY index.php /usr/local/apache2/htdocs/
 
-COPY ports.conf /usr/local/apache2/conf/ports.conf
+COPY httpd.conf /usr/local/apache2/conf
 
 RUN ls /usr/local/apache2/htdocs/
 
