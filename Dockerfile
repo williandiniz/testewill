@@ -3,6 +3,9 @@ FROM registry.redhat.io/rhscl/httpd-24-rhel7
 # Add application sources to a directory where the assemble script expects them
 # and set permissions so that the container runs without the root access
 USER 0
+
+RUN yum install nano
+
 ADD index.php /tmp/src/index.php
 RUN chown -R 1001:0 /tmp/src
 USER 1001
