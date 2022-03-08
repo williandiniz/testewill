@@ -8,7 +8,7 @@ RUN yum install nano -y
 
 RUN yum search php
 
-RUN yum install php80 -y
+RUN yum install php8 -y
 
 
 ADD index.php /tmp/src/index.php
