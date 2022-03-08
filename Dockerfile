@@ -1,6 +1,6 @@
 FROM registry.redhat.io/rhscl/httpd-24-rhel7
 
-RUN dnf install php php-cli php-common
+RUN yum install rh-php80-*
 
 RUN php -v
 
