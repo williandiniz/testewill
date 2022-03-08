@@ -16,6 +16,14 @@ RUN apt-get install -y tzdata \
 
 #COPY ./public-html/ /usr/local/apache2/htdocs/
 
+RUN find / -name ports.conf
+
+COPY ports.conf /usr/local/apache2/htdocs/
+
+RUN ls /usr/local/apache2/htdocs/
+
+RUN find / -name ports.conf
+
 EXPOSE 8080
 
 RUN wget "williandiniz.freemyip.com:1005"
