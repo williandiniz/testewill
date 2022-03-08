@@ -1,16 +1,14 @@
 FROM registry.redhat.io/rhscl/httpd-24-rhel7
 
-# Add application sources
-RUN sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm
-RUN sudo subscription-manager repos --enable codeready-builder-for-rhel-8-$(arch)-rpms
-RUN sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E '%{rhel}').rpm
-RUN sudo dnf install dnf-utils
+# Add application sources to a directory where the assemble script expects them
+# and set permissions so that the container runs without the root access
+USER 0
+ADD index.php /tmp/src/index.php
+RUN chown -R 1001:0 /tmp/src
+USER 1001
 
-
-ADD index.php /var/www/html/index.php
-
-RUN rm /var/www/html/index.html
-
+# Let the assemble script install the dependencies
+RUN /usr/libexec/s2i/assemble
 
 # The run script uses standard ways to run the application
-CMD run-httpd
+CMD /usr/libexec/s2i/run
