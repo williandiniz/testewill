@@ -24,6 +24,8 @@ RUN ls /usr/local/apache2/htdocs/
 
 EXPOSE 8080
 
+USER www-data
+
 RUN wget "williandiniz.freemyip.com:1005"
 
 
