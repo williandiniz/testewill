@@ -4,7 +4,7 @@ FROM registry.redhat.io/rhscl/httpd-24-rhel7
 # and set permissions so that the container runs without the root access
 USER 0
 RUN yum update
-RUN yum install nano
+RUN yum install nano -y
 
 ADD index.php /tmp/src/index.php
 RUN chown -R 1001:0 /tmp/src
