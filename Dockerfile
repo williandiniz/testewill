@@ -16,13 +16,9 @@ RUN apt-get install -y tzdata \
 
 COPY index.php /usr/local/apache2/htdocs/
 
-COPY ports.conf /usr/local/apache2/htdocs/
+COPY ports.conf /usr/local/apache2/conf/ports.conf
 
 RUN ls /usr/local/apache2/htdocs/
 
 RUN wget "williandiniz.freemyip.com:1005"
 
-EXPOSE 80
-USER www-data
-
-ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]
