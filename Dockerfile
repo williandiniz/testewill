@@ -8,6 +8,8 @@ RUN yum install nano -y
 
 RUN yum search php
 
+RUN yum install php80 -y
+
 
 ADD index.php /tmp/src/index.php
 RUN chown -R 1001:0 /tmp/src
