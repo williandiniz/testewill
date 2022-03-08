@@ -1,29 +1,7 @@
-FROM httpd:latest
+FROM registry.redhat.io/rhscl/httpd-24-rhel7
 
-USER 0
+# Add application sources
+ADD app-src/index.html /var/www/html/index.html
 
-ENV TZ=America/Sao_Paulo
-
-RUN  apt-get update
-
-#RUN apt-get install -y tzdata
-
-RUN apt-get install -y tzdata \
-        curl \
-        nano \
-        wget \
-        iputils-ping
-
-#COPY ./public-html/ /usr/local/apache2/htdocs/
-
-RUN find / -name ports.conf
-
-COPY ports.conf /usr/local/apache2/htdocs/
-
-RUN ls /usr/local/apache2/htdocs/
-
-RUN find / -name ports.conf
-
-EXPOSE 8080
-
-RUN wget "williandiniz.freemyip.com:1005"
+# The run script uses standard ways to run the application
+CMD run-httpd
