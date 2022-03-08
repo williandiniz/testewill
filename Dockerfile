@@ -30,4 +30,6 @@ WORKDIR /var/www/mysite
 
 EXPOSE 80 443
 
+RUN chmod +x /etc/entrypoint.sh
+
 ENTRYPOINT ["/etc/entrypoint.sh"]
