@@ -16,7 +16,7 @@ RUN apt-get install -y tzdata \
 
 COPY index.php /usr/local/apache2/htdocs/
 
-RUN find / -name httpd.conf
+RUN find / -name httpd.conf > teste.txt
 
 RUN ls /usr/local/apache2/htdocs/
 
