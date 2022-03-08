@@ -29,9 +29,9 @@ COPY --chown=www-data:www-data . /var/www/mysite
 WORKDIR /var/www/mysite
 
 EXPOSE 80 443
-USER www-data
-RUN whoami
 
-RUN chmod +x /etc/entrypoint.sh
+USER www-data
+
+RUN whoami
 
 ENTRYPOINT ["/etc/entrypoint.sh"]
