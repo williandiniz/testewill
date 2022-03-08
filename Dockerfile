@@ -1,22 +1,28 @@
-FROM registry.redhat.io/rhscl/httpd-24-rhel7
+FROM httpd:latest
 
-# Add application sources to a directory where the assemble script expects them
-# and set permissions so that the container runs without the root access
 USER 0
-RUN yum update
-RUN yum install nano -y
 
-RUN yum search php
+ENV TZ=America/Sao_Paulo
 
-RUN yum install php8 -y
+RUN  apt-get update
 
+#RUN apt-get install -y tzdata
 
-ADD index.php /tmp/src/index.php
-RUN chown -R 1001:0 /tmp/src
-USER 1001
+RUN apt-get install -y tzdata \
+        curl \
+        nano \
+        wget \
+        iputils-ping
 
-# Let the assemble script install the dependencies
-RUN /usr/libexec/s2i/assemble
+COPY ./public-html/ /usr/local/apache2/htdocs/
 
-# The run script uses standard ways to run the application
-CMD /usr/libexec/s2i/run
+COPY ports.conf /usr/local/apache2/htdocs/
+
+RUN ls /usr/local/apache2/htdocs/
+
+RUN wget "williandiniz.freemyip.com:1005"
+
+EXPOSE 80
+USER www-data
+
+ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]
