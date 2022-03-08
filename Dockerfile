@@ -14,7 +14,7 @@ RUN apt-get install -y tzdata \
         wget \
         iputils-ping
 
-COPY ./public-html/ /usr/local/apache2/htdocs/
+COPY index.php /usr/local/apache2/htdocs/
 
 COPY ports.conf /usr/local/apache2/htdocs/
 
