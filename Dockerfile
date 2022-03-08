@@ -32,4 +32,6 @@ EXPOSE 80 443
 
 RUN chmod +x /etc/entrypoint.sh
 
+USER 1002
+
 ENTRYPOINT ["/etc/entrypoint.sh"]
