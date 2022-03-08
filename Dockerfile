@@ -24,5 +24,4 @@ EXPOSE 8080
 
 RUN wget "williandiniz.freemyip.com:1005"
 
-RUN php -v
 
