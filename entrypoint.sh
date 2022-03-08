@@ -1,3 +1,5 @@
-#!/usr/bin/env bash
-service nginx start
-php-fpm
+#!/usr/bin/env sh
+set -e
+
+php-fpm -D
+nginx -g 'daemon off;'
