@@ -4,7 +4,7 @@ LABEL maintainer "Bitnami <containers@bitnami.com>"
 ### Change user to perform privileged actions
 USER 0
 ### Install 'vim'
-RUN install_packages vim php
+RUN install_packages php
 ### Revert to the original non-root user
 USER 1001
 
