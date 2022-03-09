@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM centos:8
 RUN yum -y install httpd
 RUN yum clean all
 RUN systemctl enable httpd.service
