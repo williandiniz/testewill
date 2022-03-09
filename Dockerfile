@@ -10,3 +10,5 @@ RUN apt install curl -y
 
 RUN curl localhost:8000
 
+RUN curl localhost
+
