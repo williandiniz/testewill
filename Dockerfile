@@ -1,4 +1,4 @@
 FROM nginx
-USER 1001
+USER 1002
 COPY nginx.conf /etc/nginx/nginx.conf
 
