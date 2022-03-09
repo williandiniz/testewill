@@ -1,8 +1,8 @@
-FROM registry.access.redhat.com/rhel7
+FROM registry.access.redhat.com/rhel8
 
 # Add application sources to a directory that the assemble script expects them
 # and set permissions so that the container runs without root access
-USER 0
+#USER 0
 RUN yum update 
 RUN yum nginx -y
 COPY nginx.conf /etc/nginx/nginx.conf
