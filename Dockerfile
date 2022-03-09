@@ -8,7 +8,7 @@ RUN apt upgrade -y
 
 RUN apt install curl -y
 
-RUN curl localhost:8000
-
 RUN curl localhost
+
+RUN cat /etc/apache2/ports.conf
 
