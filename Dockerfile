@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-USER 1002
+USER 1001
 
 ENV TZ=America/Sao_Paulo
 
