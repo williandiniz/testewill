@@ -1,12 +1,14 @@
-FROM registry.redhat.io/rhel8/httpd-24
+FROM registry.access.redhat.com/ubi8/nginx-118
 
+# Add application sources to a directory that the assemble script expects them
+# and set permissions so that the container runs without root access
 USER 0
-RUN yum update
-
-RUN yum install php8 -y
-
-# Add application sources
-ADD /index.php /var/www/html/index.php
+ADD test-app /tmp/src/
+RUN chown -R 1001:0 /tmp/src
+USER 1001
+RUN yum install php -y
+# Let the assemble script to install the dependencies
+RUN /usr/libexec/s2i/assemble
 
 # Run script uses standard ways to run the application
-CMD run-httpd
+CMD /usr/libexec/s2i/run
