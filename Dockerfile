@@ -1,8 +1,8 @@
-FROM nginx
+FROM ubuntu:latest
 RUN chmod +x /tmp
-COPY nginx.conf /etc/nginx/nginx.conf
 RUN apt-get update
 RUN apt-get upgrade -y
-STOPSIGNAL SIGQUIT
+RUN apt-get install nginx
+COPY nginx.conf /etc/nginx/nginx.conf
 
 CMD ["nginx", "-g", "daemon off;"]
