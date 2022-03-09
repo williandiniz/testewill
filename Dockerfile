@@ -6,7 +6,7 @@ RUN apt update -y
 
 RUN apt upgrade -y
 
-RUN apt install curl y
+RUN apt install curl -y
 
 RUN curl localhost:8000
 
