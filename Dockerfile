@@ -1,15 +1,19 @@
-FROM bitnami/minideb
-...
-RUN install_packages php
-RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack 
-...
-COPY rootfs /
-RUN /opt/bitnami/scripts/nginx/postunpack.sh
-...
-ENV BITNAMI_APP_NAME="nginx"
-EXPOSE 8080 8443
-WORKDIR /app
+ROM bitnami/nginx
+LABEL maintainer "Bitnami <containers@bitnami.com>"
+
+### Change user to perform privileged actions
+USER 0
+### Install 'vim'
+RUN install_packages vim php
+### Revert to the original non-root user
 USER 1001
-...
-ENTRYPOINT [ "/opt/bitnami/scripts/nginx/entrypoint.sh" ]
-CMD [ "/opt/bitnami/scripts/nginx/run.sh" ]
+
+### Modify 'worker_connections' on NGINX config file to '512'
+RUN sed -i -r "s#(\s+worker_connections\s+)[0-9]+;#\1512;#" /opt/bitnami/nginx/conf/nginx.conf
+
+### Modify the ports used by NGINX by default
+ENV NGINX_HTTP_PORT_NUMBER=8181 # It is also possible to change this environment variable at runtime
+EXPOSE 8181 8143
+
+### Modify the default container user
+USER 1002
