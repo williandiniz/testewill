@@ -8,5 +8,5 @@ ENV TZ=America/Sao_Paulo
 RUN apt-get install apache2 -y
 COPY /ports.conf /etc/apache2/ports.conf
 
-RUN /etc/init.d/apache start
+RUN /etc/init.d/apache2 start
 
