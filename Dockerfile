@@ -1,6 +1,16 @@
-FROM php:7.1-apache
+FROM bitnami/minideb
+...
+## Install required system packages and dependencies
+RUN install_packages xxx yyy zzz
+RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "apache" "aa.bb.cc-dd"
+...
+COPY rootfs /
 
-ENV APACHE_DOCUMENT_ROOT /path/to/new/root
+ENV ...
 
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+EXPOSE 8080 8443
+
+WORKDIR /app
+USER 1001
+ENTRYPOINT [ "/opt/bitnami/scripts/apache/entrypoint.sh" ]
+CMD [ "/opt/bitnami/scripts/apache/run.sh" ]
