@@ -5,8 +5,9 @@ FROM registry.access.redhat.com/ubi8/nginx-118
 USER 0
 ADD index.php /tmp/src/
 RUN chown -R 1001:0 /tmp/src
-USER 1001
 RUN yum install php -y
+
+USER 1001
 # Let the assemble script to install the dependencies
 RUN /usr/libexec/s2i/assemble
 
