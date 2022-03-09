@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/rhel7/rhel:7.9-632.1645808149
+FROM registry.access.redhat.com/rhel7
 
 # Add application sources to a directory that the assemble script expects them
 # and set permissions so that the container runs without root access
