@@ -1,5 +1,4 @@
 FROM bitnami/nginx
-LABEL maintainer "Bitnami <containers@bitnami.com>"
 
 ### Change user to perform privileged actions
 USER 0
