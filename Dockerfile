@@ -12,4 +12,5 @@ RUN apt-get install -y curl \
         iputils-ping \
         apache2
         
+RUN /etc/init.d/apache2 start
         
