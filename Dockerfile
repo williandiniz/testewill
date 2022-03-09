@@ -1,5 +1,17 @@
-FROM bitnami/nginx
-USER 0
-RUN install_packages php
-### Revert to the original non-root user
-USER 1001
+FROM ubuntu:latest
+
+USER 1002
+
+ENV TZ=America/Sao_Paulo
+
+RUN  apt-get update
+
+RUN apt-get install -y tzdata
+
+RUN apt-get install -y curl \
+        nano \
+        wget \
+        iputils-ping \
+        apache2
+        
+        
