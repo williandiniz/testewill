@@ -1,10 +1,6 @@
-FROM williandiniz/nginx-will-teste:1.0
+FROM rhel8/nginx-116
 
-RUN apt update -y
 
-RUN apt upgrade -y
-
-RUN apt install curl -y
 
 
 
