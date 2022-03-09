@@ -1,31 +1,6 @@
-FROM httpd:latest
+FROM php:7.1-apache
 
-USER 0
+ENV APACHE_DOCUMENT_ROOT /path/to/new/root
 
-ENV TZ=America/Sao_Paulo
-
-RUN  apt-get update
-
-#RUN apt-get install -y tzdata
-
-RUN apt-get install -y tzdata \
-        curl \
-        nano \
-        wget \
-        iputils-ping
-
-COPY index.php /usr/local/apache2/htdocs/
-
-COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
-
-RUN find / -name httpd.conf > teste.txt
-
-RUN ls /usr/local/apache2/htdocs/
-
-EXPOSE 8080
-
-USER www-data
-
-RUN wget "williandiniz.freemyip.com:1005"
-
-
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
