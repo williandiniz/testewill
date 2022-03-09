@@ -1,5 +1,7 @@
 FROM registry.redhat.io/rhel8/httpd-24
 
+RUN yum install php
+
 # Add application sources
 ADD /index.php /var/www/html/index.php
 
