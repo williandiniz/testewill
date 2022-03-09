@@ -2,6 +2,7 @@ FROM registry.redhat.io/rhel8/httpd-24
 
 USER 0
 RUN yum update
+RUN yum httpd -y
 RUN yum install php -y
 
 # Add application sources
