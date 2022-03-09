@@ -1,7 +1,5 @@
 FROM ubuntu:latest
 
-USER 1001
-
 ENV TZ=America/Sao_Paulo
 
 RUN  apt-get update
