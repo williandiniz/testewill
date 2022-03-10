@@ -8,7 +8,7 @@ RUN chown -R 1001:0 /tmp/src
 
 RUN yum update 
 RUN yum upgrade
-RUN yum install php
+RUN yum install php -y
 
 
 # Let the assemble script install the dependencies
