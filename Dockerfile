@@ -14,7 +14,7 @@ RUN dnf install php php-cli php-common -y
 #COPY will.html /tmp/src/
 #COPY will.php /tmp/src/
 COPY nginx.conf /etc/nginx/
-RUN chown 777 /usr/local/nginx/logs/nginx.pid
+RUN chown 777 /usr/local/nginx/logs/
 
 #USER 1001
 # yum install policycoreutils
