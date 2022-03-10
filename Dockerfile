@@ -16,7 +16,7 @@ COPY will.php /usr/share/httpd/noindex/
 COPY will.php /usr/share/nginx/html/
 COPY will.php /usr/share/testpage/
 
-RUN chown -R 1001:0 /tmp/src
+RUN chown -R 1001:0 /opt/app-root/src/
 #USER 1001
 
 # Let the assemble script to install the dependencies
