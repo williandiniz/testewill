@@ -13,10 +13,13 @@ RUN dnf install php php-cli php-common -y
 
 #COPY will.html /tmp/src/
 #COPY will.php /tmp/src/
-
+COPY nginx.conf /etc/nginx/
 #RUN chown -R 1001:0 /opt/app-root/src/
 
 #USER 1001
+# yum install policycoreutils
+# semanage port -a -t http_port_t -p tcp 3200
+# semanage port -m -t http_port_t -p tcp 3200
 
 # Let the assemble script to install the dependencies
 #RUN /usr/libexec/s2i/assemble
