@@ -28,6 +28,6 @@ RUN chown 777 /run/nginx.pid
 #CMD /usr/libexec/s2i/run
 CMD nginx -g "daemon off;"
 
-RUN cat /etc/nginx/nginx.conf
+#RUN cat /etc/nginx/nginx.conf
 
 
