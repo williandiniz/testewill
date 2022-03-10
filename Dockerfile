@@ -3,4 +3,3 @@ USER 0
 RUN yum update
 RUN yum upgrade -y
 RUN yum install httpd -y
-CMD run-httpd
