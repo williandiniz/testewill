@@ -1,8 +1,16 @@
 FROM registry.access.redhat.com/ubi8/ubi:8.1
 
-RUN yum --disableplugin=subscription-manager -y module enable php:8 \
-  && yum --disableplugin=subscription-manager -y install httpd php \
-  && yum --disableplugin=subscription-manager clean all
+RUN yum update
+RUN yum upgrade -y
+
+RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm 
+RUN dnf module enable php:remi-8.0 -y  
+RUN dnf install php php-cli php-common -y
+
+#RUN yum --disableplugin=subscription-manager -y module enable php:8 \
+ # && yum --disableplugin=subscription-manager -y install httpd php \
+  #&& yum --disableplugin=subscription-manager clean all
 
 ADD index.php /var/www/html
 
