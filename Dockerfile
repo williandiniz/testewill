@@ -27,3 +27,4 @@ CMD /usr/libexec/s2i/run
 #CMD ["-D", "FOREGROUND"]
 #ENTRYPOINT ["/usr/sbin/httpd"]
 RUN whoami
+CMD nginx -g "daemon off;"
