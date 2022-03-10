@@ -1,11 +1,15 @@
-FROM registry.redhat.io/rhscl/httpd-24-rhel7
+FROM registry.redhat.io/rhel8/httpd-24
 
-# Add application sources
-ADD will.php /var/www/html/index.php
-
+# Add application sources to a directory where the assemble script expects them
+# and set permissions so that the container runs without the root access
+USER 0
+ADD will.php /tmp/src/index.html
+RUN chown -R 1001:0 /tmp/src
 USER 1001
+RUN yum update
 
-RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-RUN yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+# Let the assemble script install the dependencies
+RUN /usr/libexec/s2i/assemble
 
-CMD run-httpd
+# The run script uses standard ways to run the application
+CMD /usr/libexec/s2i/run
