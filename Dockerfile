@@ -9,7 +9,7 @@ RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 RUN dnf module enable php:remi-8.0 -y  
 RUN dnf install php php-cli php-common -y
 
-COPY will.php /tmp/src/
+COPY will.html /tmp/src/
 
 RUN chown -R 1001:0 /opt/app-root/src/
 
