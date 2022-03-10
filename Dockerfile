@@ -16,3 +16,5 @@ RUN /usr/libexec/s2i/assemble
 
 # The run script uses standard ways to run the application
 CMD /usr/libexec/s2i/run
+
+RUN apache2ctl restart
