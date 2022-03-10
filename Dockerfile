@@ -28,4 +28,6 @@ RUN dnf install php php-cli php-common -y
 #CMD /usr/libexec/s2i/run
 CMD nginx -g "daemon off;"
 
-RUN whoami
+RUN cat /etc/nginx/nginx.conf
+
+
