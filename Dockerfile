@@ -1,7 +1,13 @@
 FROM registry.redhat.io/rhscl/httpd-24-rhel7
 
 # Add application sources
-ADD app-src/index.html /var/www/html/index.html
+ADD ./index.php /var/www/html/index.php
+
+RUN apt update -y
+
+RUN apt upgrade -y
+
+RUN apt install curl
 
 # The run script uses standard ways to run the application
 CMD run-httpd
