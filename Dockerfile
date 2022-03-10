@@ -29,5 +29,6 @@ RUN chown 777 /run/nginx.pid
 CMD nginx -g "daemon off;"
 
 #RUN cat /etc/nginx/nginx.conf
+RUN find / -name nginx.pid
 
 
