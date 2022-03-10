@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi8/ubi:8.1
 
-RUN yum update
+RUN yum update -y 
 RUN yum upgrade -y
 
 RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
