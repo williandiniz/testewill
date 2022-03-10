@@ -5,7 +5,7 @@ FROM registry.redhat.io/rhel8/httpd-24
 USER 0
 ADD will.php /tmp/src/index.html
 RUN chown -R 1001:0 /tmp/src
-USER 1001
+
 RUN yum update
 
 # Let the assemble script install the dependencies
