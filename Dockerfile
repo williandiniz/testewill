@@ -9,7 +9,7 @@ RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 RUN dnf module enable php:remi-8.0 -y  
 RUN dnf install php php-cli php-common -y
 RUN dnf install php-mysqlnd -y
-#RUN dnf install zlib1g-dev -y
+RUN dnf install php-pecl-zip -y
 #RUN dnf install libpng-dev -y
 #RUN dnf install libcurl4-gnutls-dev -y
 #RUN dnf install libxml2-dev -y
