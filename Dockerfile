@@ -26,7 +26,7 @@ RUN dnf install php php-cli php-common -y
 
 # Run script uses standard ways to run the application
 #CMD /usr/libexec/s2i/run
-CMD nginx -g "daemon off;"
+#CMD nginx -g "daemon off;"
 
 RUN cat /etc/nginx/nginx.conf
 
