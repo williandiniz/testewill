@@ -7,13 +7,10 @@ RUN chown -R 1001:0 /tmp/src
 
 RUN yum update 
 RUN yum upgrade -y
-RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
+RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+RUN yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+RUN yum install -y --enablerepo=remi-php80 php php-cli
 
-RUN yum install php -y
-RUN yum install -y
-RUN yum install php-cli -y
-RUN yum install php-common -y
-RUN yum install php-fpm -y
 
 # Let the assemble script to install the dependencies
 RUN /usr/libexec/s2i/assemble
