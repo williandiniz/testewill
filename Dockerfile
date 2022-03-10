@@ -1,20 +1,17 @@
-FROM registry.redhat.io/rhel8/httpd-24
+FROM registry.access.redhat.com/ubi8/nginx-120
 
-# Add application sources to a directory where the assemble script expects them
-# and set permissions so that the container runs without the root access
+# Add application sources to a directory that the assemble script expects them
+# and set permissions so that the container runs without root access
 USER 0
-ADD will.php /tmp/src/will.php
+ADD will.php /tmp/src/
 RUN chown -R 1001:0 /tmp/src
 
 RUN yum update 
-RUN yum upgrade
-RUN yum install php -y
+RUN yum upgrade -y
+RUN yum install php
 
-
-# Let the assemble script install the dependencies
+# Let the assemble script to install the dependencies
 RUN /usr/libexec/s2i/assemble
 
-# The run script uses standard ways to run the application
+# Run script uses standard ways to run the application
 CMD /usr/libexec/s2i/run
-
-RUN apache2ctl restart
