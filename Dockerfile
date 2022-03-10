@@ -8,18 +8,17 @@ RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.n
 RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm 
 RUN dnf module enable php:remi-8.0 -y  
 RUN dnf install php php-cli php-common -y
-#RUN dnf install pdo_mysql -y
-#RUN dnf install pdo -y
+RUN dnf install php-mysqlnd-y
 #RUN dnf install zlib1g-dev -y
 #RUN dnf install libpng-dev -y
 #RUN dnf install libcurl4-gnutls-dev -y
 #RUN dnf install libxml2-dev -y
 #RUN dnf install libzip-dev -y
-RUN dnf install zip -y
-RUN dnf install ldap -y
-RUN dnf install gd -y
-RUN dnf install curl -y
-RUN dnf install soap -y
+#RUN dnf install zip -y
+#RUN dnf install ldap -y
+#RUN dnf install gd -y
+#RUN dnf install curl -y
+#RUN dnf install soap -y
 
 
 ADD index.php /var/www/html
