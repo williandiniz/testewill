@@ -1,10 +1,20 @@
-FROM registry.access.redhat.com/ubi8/nginx-118
+FROM registry.access.redhat.com/ubi8/nginx-120@sha256:6d7bd12b990d7796082db0282ffb029149961b21a9044242612c66b3e6d72149
+USER root
+RUN whoami
+RUN yum update
+RUN yum upgrade -y
+RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm 
+RUN dnf module enable php:remi-8.0 -y  
+RUN dnf install php php-cli php-common -y
 
-# Add application sources
-ADD test-app/nginx.conf "${NGINX_CONF_PATH}"
-ADD test-app/nginx-default-cfg/*.conf "${NGINX_DEFAULT_CONF_PATH}"
-ADD test-app/nginx-cfg/*.conf "${NGINX_CONFIGURATION_PATH}"
-ADD test-app/*.html .
+USER root
+#USER 1001
+
+# Let the assemble script to install the dependencies
+RUN /usr/libexec/s2i/assemble
 
 # Run script uses standard ways to run the application
-CMD nginx -g "daemon off;"
+CMD /usr/libexec/s2i/run
+
+RUN whoami
