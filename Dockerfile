@@ -4,15 +4,18 @@ USER root
 RUN whoami
 RUN yum update
 RUN yum upgrade -y
-#RUN yum install httpd -y
-#COPY httpd.conf etc/httpd/conf/httpd.conf
 RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm 
 RUN dnf module enable php:remi-8.0 -y  
 RUN dnf install php php-cli php-common -y
 
 USER root
-ADD will.php /tmp/src/
+COPY will.php /tmp/src/
+
+COPY will.php /usr/share/httpd/noindex/
+COPY will.php /usr/share/nginx/html/
+COPY will.php /usr/share/testpage/
+
 RUN chown -R 1001:0 /tmp/src
 #USER 1001
 
@@ -22,9 +25,5 @@ RUN /usr/libexec/s2i/assemble
 # Run script uses standard ways to run the application
 CMD /usr/libexec/s2i/run
 
-#EXPOSE 8080
-# Start the service
-#CMD ["-D", "FOREGROUND"]
-#ENTRYPOINT ["/usr/sbin/httpd"]
 RUN whoami
-CMD nginx -g "daemon off;"
+
