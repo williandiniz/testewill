@@ -3,7 +3,8 @@ USER 0
 RUN yum update
 RUN yum upgrade -y
 RUN yum install httpd -y
-EXPOSE 80
+COPY httpd.conf etc/httpd/conf/httpd.conf
+EXPOSE 8000
 # Start the service
 CMD ["-D", "FOREGROUND"]
 ENTRYPOINT ["/usr/sbin/httpd"]
