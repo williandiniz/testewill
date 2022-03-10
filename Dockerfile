@@ -1,19 +1,30 @@
-FROM registry.access.redhat.com/ubi8/nginx-120
-# Add application sources to a directory that the assemble script expects them
-# and set permissions so that the container runs without root access
+FROM koji/image-build
 USER 0
-ADD will.php /tmp/src/
-RUN chown -R 1001:0 /tmp/src
+LABEL maintainer="Red Hat, Inc."
 
-RUN yum update 
+LABEL com.redhat.component="ubi8-container" \
+      name="ubi8" \
+      version="8.5"
+
+#label for EULA
+LABEL com.redhat.license_terms="https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI"
+
+#labels for container catalog
+LABEL summary="Provides the latest release of Red Hat Universal Base Image 8."
+LABEL description="The Universal Base Image is designed and engineered to be the base layer for all of your containerized applications, middleware and utilities. This base image is freely redistributable, but Red Hat only supports Red Hat technologies through subscriptions for Red Hat products. This image is maintained by Red Hat and updated regularly."
+LABEL io.k8s.display-name="Red Hat Universal Base Image 8"
+LABEL io.openshift.expose-services=""
+LABEL io.openshift.tags="base rhel8"
+
+ENV container oci
+ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+CMD ["/bin/bash"]
+
+RUN rm -rf /var/log/*
+#rhbz 1609043
+RUN mkdir -p /var/log/rhsm
+
+RUN yum update
 RUN yum upgrade -y
-RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-RUN yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
-RUN yum install -y --enablerepo=remi-php80 php php-cli
-
-
-# Let the assemble script to install the dependencies
-RUN /usr/libexec/s2i/assemble
-
-# Run script uses standard ways to run the application
-CMD /usr/libexec/s2i/run
+RUN yum install apache2 -y
