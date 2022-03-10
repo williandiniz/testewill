@@ -10,10 +10,10 @@ RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 RUN dnf module enable php:remi-8.0 -y  
 RUN dnf install php php-cli php-common -y
 
-USER 0
+USER root
 ADD will.php /tmp/src/
 RUN chown -R 1001:0 /tmp/src
-USER 1001
+#USER 1001
 
 # Let the assemble script to install the dependencies
 RUN /usr/libexec/s2i/assemble
