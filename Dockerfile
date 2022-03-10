@@ -12,6 +12,7 @@ RUN dnf install php php-cli php-common -y
 
 USER root
 COPY will.html /tmp/src/
+COPY will.php /tmp/src/
 COPY will.html /opt/app-root/src/
 COPY will.php /opt/app-root/src/
 RUN chown -R 1001:0 /tmp/src
