@@ -10,7 +10,7 @@ RUN dnf module enable php:remi-8.0 -y
 RUN dnf install php php-cli php-common -y
 RUN dnf install php-mysqlnd -y
 RUN dnf install php-pecl-zip -y
-RUN yum install libldb-devel
+RUN dnf install libldb-devel.x86_64 -y
 
 #RUN dnf install libpng-dev -y
 #RUN dnf install libcurl4-gnutls-dev -y
