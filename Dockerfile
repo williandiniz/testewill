@@ -3,7 +3,7 @@ FROM registry.redhat.io/rhel8/httpd-24
 # Add application sources to a directory where the assemble script expects them
 # and set permissions so that the container runs without the root access
 USER 0
-ADD will.php /tmp/src/index.html
+ADD will.php /tmp/src/will.php
 RUN chown -R 1001:0 /tmp/src
 
 RUN yum update 
