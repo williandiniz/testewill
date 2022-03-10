@@ -8,6 +8,7 @@ RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.n
 RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm 
 RUN dnf module enable php:remi-8.0 -y  
 RUN dnf install php php-cli php-common -y
+RUN rm -rf /var/run/httpd/* /run/httpd/* /tmp/httpd*
 EXPOSE 8080
 # Start the service
 CMD ["-D", "FOREGROUND"]
