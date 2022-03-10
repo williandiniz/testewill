@@ -14,9 +14,9 @@ USER root
 COPY will.html /tmp/src/
 COPY will.php /tmp/src/
 COPY will.html /opt/app-root/src/
-COPY will.php /opt/app-root/src/
+#COPY will.php /opt/app-root/src/
 RUN chown -R 1001:0 /tmp/src
-RUN chown -R 1001:0 /opt/app-root/src/
+#RUN chown -R 1001:0 /opt/app-root/src/
 #USER 1001
 
 # Let the assemble script to install the dependencies
