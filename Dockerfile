@@ -13,7 +13,7 @@ RUN dnf install php php-cli php-common -y
 
 #COPY will.html /tmp/src/
 #COPY will.php /tmp/src/
-COPY nginx.conf /etc/nginx/
+#COPY nginx.conf /etc/nginx/
 #RUN chown -R 1001:0 /opt/app-root/src/
 
 #USER 1001
