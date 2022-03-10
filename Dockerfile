@@ -11,6 +11,8 @@ RUN dnf install php php-cli php-common -y
 
 COPY will.php /tmp/src/
 
+RUN chown -R 1001:0 /opt/app-root/src/
+
 #USER 1001
 
 # Let the assemble script to install the dependencies
