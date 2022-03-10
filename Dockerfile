@@ -4,6 +4,7 @@ USER root
 RUN whoami
 RUN yum update
 RUN yum upgrade -y
+
 RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm 
 RUN dnf module enable php:remi-8.0 -y  
@@ -11,9 +12,7 @@ RUN dnf install php php-cli php-common -y
 
 USER root
 COPY will.html /tmp/src/
-
-#RUN chown -R 1001:0 /opt/app-root/src/
-RUN chown -R 1001:0 /tmp/src/
+RUN chown -R 1001:0 /tmp/src
 #USER 1001
 
 # Let the assemble script to install the dependencies
@@ -21,5 +20,3 @@ RUN /usr/libexec/s2i/assemble
 
 # Run script uses standard ways to run the application
 CMD /usr/libexec/s2i/run
-
-RUN whoami
