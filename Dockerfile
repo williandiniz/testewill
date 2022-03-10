@@ -12,10 +12,6 @@ RUN dnf install php php-cli php-common -y
 USER root
 COPY will.html /tmp/src/
 
-COPY will.html /usr/share/httpd/noindex/
-COPY will.html/usr/share/nginx/html/
-COPY will.html /usr/share/testpage/
-
 RUN chown -R 1001:0 /opt/app-root/src/
 RUN chown -R 1001:0 /tmp/src/
 #USER 1001
