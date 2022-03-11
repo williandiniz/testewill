@@ -1,5 +1,5 @@
 FROM registry.access.redhat.com/ubi8/ubi:8.1
-RUN  mkdir -p /var/www/html/public
+#RUN  mkdir -p /var/www/html/public
 
 RUN yum update -y 
 RUN yum upgrade -y
@@ -44,9 +44,9 @@ RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN git clone https://github.com/laravel/laravel.git
 
-RUN cp -r laravel /var/www/html/public
+RUN cp -r laravel /var/www/html/
 # Set working directory
-WORKDIR /var/www/html/public/laravel
+WORKDIR /var/www/html/laravel/public
 
 #COPY . .
 
