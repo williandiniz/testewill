@@ -37,6 +37,8 @@ RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
   && chgrp -R 0 /var/log/httpd /var/run/httpd /run/php-fpm \
   && chmod -R g=u /var/log/httpd /var/run/httpd /run/php-fpm
 
+WORKDIR /var/www/html
+
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN git clone https://github.com/laravel/laravel.git
 RUN cp -R laravel /var/www/html
@@ -47,7 +49,9 @@ RUN cp -R laravel /var/www/html
 
 #RUN composer config --auth gitlab-token.git.sebraemg.com.br "ct9ZiYyPsTjiee4Y7XhK" --no-ansi --no-interaction
 #RUN composer install --ignore-platform-req=ext-ldap
-RUN cd /var/www/html/laravel
+#RUN cd /var/www/html/laravel
+RUN pwd
+
 RUN composer install
 #WillRUN USER 1000
 RUN chmod -R 777 /var/www/html
