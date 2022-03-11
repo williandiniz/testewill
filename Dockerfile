@@ -37,13 +37,13 @@ RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
   && chgrp -R 0 /var/log/httpd /var/run/httpd /run/php-fpm \
   && chmod -R g=u /var/log/httpd /var/run/httpd /run/php-fpm
 
-WORKDIR /var/www/html
+#WORKDIR /var/www/html
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN git clone https://github.com/laravel/laravel.git
 RUN cp -R laravel /var/www/html
 # Set working directory
-#WORKDIR /var/www/html
+WORKDIR /var/www/html/laravel
 
 #COPY . .
 
