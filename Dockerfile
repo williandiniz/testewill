@@ -42,7 +42,7 @@ RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN git clone https://github.com/laravel/laravel.git
-RUN mkir /var/www/hmtl/public
+RUN mkdir /var/www/hmtl/public
 
 RUN mv -R laravel /var/www/html/public
 # Set working directory
