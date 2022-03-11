@@ -1,5 +1,5 @@
 FROM registry.access.redhat.com/ubi8/ubi:8.1
-#RUN  mkdir -p /var/www/html/public
+RUN  mkdir -p /var/www/html/public
 
 RUN yum update -y 
 RUN yum upgrade -y
