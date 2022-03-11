@@ -55,9 +55,9 @@ WORKDIR /var/www/hmtl/public/laravel
 #RUN cd /var/www/html/laravel
 RUN pwd
 
-RUN composer install
-RUN cp .env.example .env
-RUN php artisan key:generate
+#-RUN composer install
+#-RUN cp .env.example .env
+#-RUN php artisan key:generate
 #WillRUN USER 1000
 RUN chmod -R 777 /var/www/
 
