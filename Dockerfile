@@ -46,20 +46,19 @@ RUN git clone https://github.com/laravel/laravel.git
 
 RUN cp -r laravel /var/www/html/
 # Set working directory
-WORKDIR /var/www/html/laravel/public
+WORKDIR /var/www/html/laravel
 
 #COPY . .
 
 #RUN composer config --auth gitlab-token.git.sebraemg.com.br "ct9ZiYyPsTjiee4Y7XhK" --no-ansi --no-interaction
 #RUN composer install --ignore-platform-req=ext-ldap
-#RUN cd /var/www/html/laravel
 RUN pwd
-RUN cd /var/www/html/laravel
 RUN composer install
 RUN cp .env.example .env
 RUN php artisan key:generate
 #WillRUN USER 1000
 RUN chmod -R 777 /var/www/
+WORKDIR /var/www/html/laravel/public
 
 
 
