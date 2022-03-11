@@ -17,9 +17,9 @@ RUN dnf install php-soap -y
 #RUN dnf install libldb -y
 #RUN dnf install libldb-devel -y
 
-RUN dnf install libpng-dev -y
-RUN dnf install libcurl4-gnutls-dev -y
-RUN dnf install libxml2-dev -y
+#RUN dnf install libpng-dev -y
+#RUN dnf install libcurl4-gnutls-dev -y
+#RUN dnf install libxml2-dev -y
 #RUN dnf install libzip-dev -y
 #RUN dnf install zip -y
 #RUN dnf install ldap -y
