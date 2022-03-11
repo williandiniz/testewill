@@ -44,7 +44,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN git clone https://github.com/laravel/laravel.git
 RUN cp -R laravel /var/www/html
 # Set working directory
-WORKDIR /var/www/
+WORKDIR /var/www/hmtl
 
 #COPY . .
 
