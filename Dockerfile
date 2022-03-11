@@ -32,6 +32,7 @@ ADD index.php /var/www/html
 ADD info.php /var/www/html
 
 RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
+  && sed -i 's/var/www/html/var/www/' /etc/httpd/conf/httpd.conf \
   && sed -i 's/listen.acl_users = apache,nginx/listen.acl_users =/' /etc/php-fpm.d/www.conf \
   && mkdir /run/php-fpm \
   && chgrp -R 0 /var/log/httpd /var/run/httpd /run/php-fpm \
@@ -43,7 +44,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN git clone https://github.com/laravel/laravel.git
 RUN cp -R laravel /var/www/html
 # Set working directory
-WORKDIR /var/www/html/laravel
+WORKDIR /var/www/html
 
 #COPY . .
 
