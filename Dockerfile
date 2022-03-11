@@ -54,10 +54,10 @@ WORKDIR /var/www/html/laravel/public
 #RUN composer install --ignore-platform-req=ext-ldap
 #RUN cd /var/www/html/laravel
 RUN pwd
-
-#-RUN composer install
-#-RUN cp .env.example .env
-#-RUN php artisan key:generate
+RUN cd /var/www/html/laravel
+RUN composer install
+RUN cp .env.example .env
+RUN php artisan key:generate
 #WillRUN USER 1000
 RUN chmod -R 777 /var/www/
 
