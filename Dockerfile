@@ -46,7 +46,7 @@ RUN git clone https://github.com/laravel/laravel.git
 
 RUN mv laravel /var/www/html/public
 # Set working directory
-WORKDIR /var/www/hmtl/public
+WORKDIR /var/www/hmtl/public/laravel
 
 #COPY . .
 
