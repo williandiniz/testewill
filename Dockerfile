@@ -29,7 +29,7 @@ RUN dnf install curl -y
 #RUN dnf install soap -y
 RUN dnf install python3 -y
 RUN dnf install vim-common -y
-RUN dnf install coreutils -y
+#RUN dnf install coreutils -y
 
 
 ADD index.php /var/www/html
