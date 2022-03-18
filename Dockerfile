@@ -71,4 +71,4 @@ RUN pwd
 
 EXPOSE 8080
 USER 1001
-CMD php-fpm & httpd -D FOREGROUND
+CMD httpd -D FOREGROUND
