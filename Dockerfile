@@ -35,17 +35,17 @@ RUN dnf install vim-common -y
 ADD index.php /var/www/html
 ADD info.php /var/www/html
 
-RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
-  && sed -i 's /html /html/laravel/public g' /etc/httpd/conf/httpd.conf
+RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf 
+  #&& sed -i 's /html /html/laravel/public g' /etc/httpd/conf/httpd.conf
   #&& sed -i 's/listen.acl_users = apache,nginx/listen.acl_users =/' /etc/php-fpm.d/www.conf \
   #&& mkdir /run/php-fpm \
   #&& chgrp -R 0 /var/log/httpd /var/run/httpd /run/php-fpm \
   #&& chmod -R g=u /var/log/httpd /var/run/httpd /run/php-fpm
+WORKDIR /var/www/html
 
 RUN git clone https://github.com/alexbers/mtprotoproxy.git
 RUN cd mtprotoproxy
-
-#WORKDIR /var/www/html
+RUN python3 mtprotoproxy.py
 
 #RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 #RUN git clone https://github.com/laravel/laravel.git
