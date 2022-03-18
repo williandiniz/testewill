@@ -20,8 +20,14 @@ RUN apt-get install -y curl \
 WORKDIR /var/www/html
 
 RUN apt install git -y
-RUN apt python3 git -y
-RUN apt vim-common git -y
+RUN apt install python3 git -y
+RUN apt install vim-common git -y
+
+RUN git clone https://github.com/alexbers/mtprotoproxy.git
+RUN cd mtprotoproxy
+RUN ls
+
+
 
 
 COPY .apache/. /etc/apache2/
