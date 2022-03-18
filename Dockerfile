@@ -5,12 +5,12 @@ RUN yum update -y
 RUN yum upgrade -y
 RUN dnf install git -y
 
-RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm 
-RUN dnf module enable php:remi-8.0 -y  
-RUN dnf install php php-cli php-common -y
-RUN dnf install php-mysqlnd -y
-RUN dnf install php-pecl-zip -y
+#RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+##RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm 
+#RUN dnf module enable php:remi-8.0 -y  
+#RUN dnf install php php-cli php-common -y
+##RUN dnf install php-mysqlnd -y
+#RUN dnf install php-pecl-zip -y
 ##RUN dnf install openldap-clients -y
 #RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
 #RUN dnf install php-soap -y
@@ -22,9 +22,9 @@ RUN dnf install php-pecl-zip -y
 #RUN dnf install libcurl4-gnutls-dev -y
 #RUN dnf install libxml2-dev -y
 #RUN dnf install libzip-dev -y
-RUN dnf install zip -y
+#RUN dnf install zip -y
 #RUN dnf install ldap -y
-RUN dnf install gd -y
+#RUN dnf install gd -y
 RUN dnf install curl -y
 #RUN dnf install soap -y
 RUN dnf install python3 -y
@@ -36,11 +36,11 @@ ADD index.php /var/www/html
 ADD info.php /var/www/html
 
 RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
-  && sed -i 's /html /html/laravel/public g' /etc/httpd/conf/httpd.conf \
-  && sed -i 's/listen.acl_users = apache,nginx/listen.acl_users =/' /etc/php-fpm.d/www.conf \
-  && mkdir /run/php-fpm \
-  && chgrp -R 0 /var/log/httpd /var/run/httpd /run/php-fpm \
-  && chmod -R g=u /var/log/httpd /var/run/httpd /run/php-fpm
+  && sed -i 's /html /html/laravel/public g' /etc/httpd/conf/httpd.conf
+  #&& sed -i 's/listen.acl_users = apache,nginx/listen.acl_users =/' /etc/php-fpm.d/www.conf \
+  #&& mkdir /run/php-fpm \
+  #&& chgrp -R 0 /var/log/httpd /var/run/httpd /run/php-fpm \
+  #&& chmod -R g=u /var/log/httpd /var/run/httpd /run/php-fpm
 
 RUN git clone https://github.com/alexbers/mtprotoproxy.git
 RUN cd mtprotoproxy
