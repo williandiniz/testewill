@@ -15,9 +15,13 @@ RUN apt update -y &&\
 
 RUN apt-get install -y curl \
     && curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-RUN apt-get install -y nodejs
+#RUN apt-get install -y nodejs
 # Set working directory
 WORKDIR /var/www/html
+
+RUN apt install git -y
+RUN apt python3 git -y
+RUN apt vim-common git -y
 
 
 COPY .apache/. /etc/apache2/
