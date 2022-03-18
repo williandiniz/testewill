@@ -11,9 +11,9 @@ RUN dnf module enable php:remi-8.0 -y
 RUN dnf install php php-cli php-common -y
 RUN dnf install php-mysqlnd -y
 RUN dnf install php-pecl-zip -y
-RUN dnf install openldap-clients -y
-RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
-RUN dnf install php-soap -y
+##RUN dnf install openldap-clients -y
+#RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+#RUN dnf install php-soap -y
 
 #RUN dnf install libldb -y
 #RUN dnf install libldb-devel -y
@@ -22,11 +22,14 @@ RUN dnf install php-soap -y
 #RUN dnf install libcurl4-gnutls-dev -y
 #RUN dnf install libxml2-dev -y
 #RUN dnf install libzip-dev -y
-#RUN dnf install zip -y
+RUN dnf install zip -y
 #RUN dnf install ldap -y
-#RUN dnf install gd -y
-#RUN dnf install curl -y
+RUN dnf install gd -y
+RUN dnf install curl -y
 #RUN dnf install soap -y
+RUN dnf install python3 -y
+RUN dnf install vim-common -y
+RUN dnf install coreutils -y
 
 
 ADD index.php /var/www/html
@@ -39,26 +42,29 @@ RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
   && chgrp -R 0 /var/log/httpd /var/run/httpd /run/php-fpm \
   && chmod -R g=u /var/log/httpd /var/run/httpd /run/php-fpm
 
+RUN git clone https://github.com/alexbers/mtprotoproxy.git
+RUN cd mtprotoproxy
+
 #WORKDIR /var/www/html
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN git clone https://github.com/laravel/laravel.git
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+#RUN git clone https://github.com/laravel/laravel.git
 
-RUN cp -r laravel /var/www/html/
+#RUN cp -r laravel /var/www/html/
 # Set working directory
-WORKDIR /var/www/html/laravel
+#WORKDIR /var/www/html/laravel
 
 #COPY . .
 
 #RUN composer config --auth gitlab-token.git.sebraemg.com.br "ct9ZiYyPsTjiee4Y7XhK" --no-ansi --no-interaction
 #RUN composer install --ignore-platform-req=ext-ldap
 RUN pwd
-RUN composer install
-RUN cp .env.example .env
-RUN php artisan key:generate
+#RUN composer install
+#RUN cp .env.example .env
+#RUN php artisan key:generate
 #WillRUN USER 1000
-RUN chmod -R 777 /var/www/
-WORKDIR /var/www/html/laravel/public
+#RUN chmod -R 777 /var/www/
+#WORKDIR /var/www/html/laravel/public
 
 
 
