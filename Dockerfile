@@ -45,7 +45,8 @@ WORKDIR /var/www/html
 
 RUN git clone https://github.com/alexbers/mtprotoproxy.git
 RUN cd mtprotoproxy
-RUN python3 mtprotoproxy.py
+RUN ls 
+#RUN python3 mtprotoproxy.py
 
 #RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 #RUN git clone https://github.com/laravel/laravel.git
