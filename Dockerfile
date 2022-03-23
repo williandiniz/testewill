@@ -1,63 +1,13 @@
-FROM php:8.1-apache
+FROM ruby:3.0
 
-#ENV BUILD_ENV=${BUILD_ENV:-dev}
+# throw errors if Gemfile has been modified since Gemfile.lock
+RUN bundle config --global frozen 1
 
-RUN apt update -y &&\
-    apt install nano -y &&\
-    apt-get install libldb-dev libldap2-dev  -y
+WORKDIR /usr/src/app
 
-#RUN docker-php-ext-install opcache
-#RUN apt-get update \
- #   && apt-get install -y git zlib1g-dev libpng-dev \
-  #  &&  apt-get install libcurl4-gnutls-dev libxml2-dev -y\
-   # && apt-get install libzip-dev -y\
-    #&& docker-php-ext-install pdo pdo_mysql zip ldap gd curl soap
-
-RUN apt-get install -y curl \
-    && curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-#RUN apt-get install -y nodejs
-# Set working directory
-WORKDIR /var/www/html
-
-RUN apt install git -y
-RUN apt install python3 git -y
-RUN apt install vim-common git -y
-
-RUN git clone https://github.com/alexbers/mtprotoproxy.git
-RUN cd mtprotoproxy
-RUN ls
-
-
-
-
-COPY .apache/. /etc/apache2/
-
-#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
 
 COPY . .
-#RUN composer install
 
-RUN chmod -R 777 /var/www/html
-
-#RUN php artisan cache:clear
-#RUN php artisan config:clear
-#RUN php artisan config:cache
-#RUN php artisan view:cache
-
-#RUN php artisan l5-swagger:generate
-
-#RUN php artisan migrate
-#RUN php artisan db:seed
-
-#RUN cp .env.example .env
-#RUN php artisan key:generate
-#RUN npm install
-#RUN npm run dev
-#RUN composer dump-autoload
-
-RUN a2ensite teste
-RUN a2enmod rewrite
-EXPOSE 8080
-USER 1001
-RUN service apache2 restart
+CMD ["./your-daemon-or-script.rb"]
