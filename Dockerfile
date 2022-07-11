@@ -1,31 +1,48 @@
+FROM ubi8/nodejs-14
 
-FROM registry.access.redhat.com/ubi8/ubi:8.1
+# Add application sources to a directory that the assemble script expects them
+# and set permissions so that the container runs without root access
+USER 0
+ADD app-src /tmp/src
+RUN chown -R 1001:0 /tmp/src
+USER 1001
 
-RUN yum update -y 
-RUN yum upgrade -y
+# Install the dependencies
+RUN /usr/libexec/s2i/assemble
+
+# Set the default command for the resulting image
+CMD /usr/libexec/s2i/run
+
+
+#-FROM registry.access.redhat.com/ubi8/ubi:8.1
+
+#-RUN yum update -y 
+#-RUN yum upgrade -y
 
 #RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 #RUN dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm 
 #RUN dnf module enable php:remi-8.0 -y  
 #RUN dnf install php php-cli php-common -y
 #RUN dnf module enable php:remi-8.0 -y
-RUN yum install httpd
 
-RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
+#-RUN yum install httpd
+
+#-RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
   && sed -i 's/listen.acl_users = apache,nginx/listen.acl_users =/' /etc/php-fpm.d/www.conf \
   && mkdir /run/php-fpm \
   && chgrp -R 0 /var/log/httpd /var/run/httpd /run/php-fpm \
   && chmod -R g=u /var/log/httpd /var/run/httpd /run/php-fpm
 #RUN a2enmod rewrite
 #RUN a2enmod headers
-COPY info.php /var/www/index1.php 
-COPY info.php /usr/share/testpage/index2.php
 
-COPY info.php /usr/share/doc/oniguruma5php/index3.php
-COPY info.php /usr/share/doc/cyrus-sasl-lib/index4.php
-COPY info.php /usr/share/testpage/index5.php
-COPY info.php /usr/share/httpd/noindex/index6.php
+#-COPY info.php /var/www/index1.php 
+#-COPY info.php /usr/share/testpage/index2.php
 
-EXPOSE 8080
-USER 1001
-CMD php-fpm & httpd -D FOREGROUND
+#-COPY info.php /usr/share/doc/oniguruma5php/index3.php
+#-COPY info.php /usr/share/doc/cyrus-sasl-lib/index4.php
+#-COPY info.php /usr/share/testpage/index5.php
+#-COPY info.php /usr/share/httpd/noindex/index6.php
+
+#-EXPOSE 8080
+#-USER 1001
+#-CMD php-fpm & httpd -D FOREGROUND
